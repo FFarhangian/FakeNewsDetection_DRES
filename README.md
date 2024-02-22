@@ -1,2 +1,2 @@
-# FakeNewsDetection_Multiview_DES_InstanceHardness
-Enhancing Fake News Detection through Multiview Dynamic Ensemble Selection based on Instance Hardness
+# Fake News Detection using Dynamic Multi-view and Ensemble Selection System
+Enhancing Fake News Detection through Dynamic Multiview and Ensemble Selection system based on Instance Hardness scores
