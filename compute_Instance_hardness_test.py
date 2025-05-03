@@ -76,14 +76,12 @@ def process_multiple_datasets(base_dir, dataset_names, feature_names, data_types
         )
 
 
-# ===== Example Usage =====
 if __name__ == "__main__":
-    BASE_DIR = "/your/local/NLP_GNN"
+    BASE_DIR = "/your/local/root"
     DATASET_NAMES = ["df1", "df2", "df3", "df4"]
     FEATURE_NAMES = [
         "W2V", "Glove", "Fasttext", "ELMO", "BERT", "DistilBERT", "ALBERT",
-        "RoBERTa", "BART", "ELECTRA", "XLNET", "LLAMA", "Falcon", "LLAMA3", "MISTRAL"
-    ]
+        "RoBERTa", "BART", "ELECTRA", "XLNET", "LLAMA", "Falcon", "LLAMA3", "MISTRAL"]
     DATA_TYPES = ["train", "test"]
 
     process_multiple_datasets(BASE_DIR, DATASET_NAMES, FEATURE_NAMES, DATA_TYPES)
