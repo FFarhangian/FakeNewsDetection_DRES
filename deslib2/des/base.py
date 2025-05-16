@@ -154,10 +154,7 @@ class BaseDES(BaseDS):
                                            probabilities)
 
         return predicted_proba
-    
-    #---------------------------------------------------------------------
-    #Included by Leandro Augusto Ensina: 23-11-2023
-    #---------------------------------------------------------------------
+
     def select_classifiers(self, predictions, competence_region=None, distances=None):
         competences = self.estimate_competence(
                 competence_region=competence_region,
@@ -165,7 +162,6 @@ class BaseDES(BaseDS):
                 predictions=predictions)
         selected_classifiers = self.select(competences)
         return selected_classifiers
-    #---------------------------------------------------------------------
     
     def _dynamic_selection(self, competences, predictions, probabilities):
         """ Combine models using dynamic ensemble selection. """

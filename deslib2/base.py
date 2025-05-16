@@ -58,11 +58,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
         self.knne = knne
         self.n_jobs = n_jobs
         self.voting = voting
-        #---------------------------------------------------------------------
-        #Included by Leandro Augusto Ensina: 23-11-2023
-        #---------------------------------------------------------------------
         self.algorithms_pool = alg_pool
-        #---------------------------------------------------------------------
 
         # Check optional dependency
         if knn_classifier == 'faiss' and not faiss_knn_wrapper.is_available():
@@ -87,11 +83,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
         -------
         self
         """
-        #---------------------------------------------------------------------
-        #Included by Leandro Augusto Ensina: 23-11-2023
-        #---------------------------------------------------------------------
         self.pred_train = pred_train
-        #---------------------------------------------------------------------
         self.random_state_ = check_random_state(self.random_state)
         X, y = self._validate_data(
             X,
@@ -130,12 +122,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
         self._validate_parameters()
 
         self.roc_algorithm_.fit(X_dsel, y_dsel)
-        #---------------------------------------------------------------------
-        #Modified by Leandro Augusto Ensina: 23-11-2023
-        #before: self.BKS_DSEL_ = self._predict_base(self.DSEL_data_)
-        #---------------------------------------------------------------------
         self.BKS_DSEL_ = self._predict_base_fit(self.DSEL_data_)
-        #---------------------------------------------------------------------
         self.DSEL_processed_ = self.BKS_DSEL_ == y_dsel[:, np.newaxis]
 
         return self
@@ -198,10 +185,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
                       estimated for each base classifier
         """
         pass
-    
-    #---------------------------------------------------------------------
-    #Included by Leandro Augusto Ensina: 23-11-2023
-    #---------------------------------------------------------------------
+
     @abstractmethod
     def select_classifiers(self, predictions, competence_region=None, distances=None):
         pass
@@ -289,10 +273,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
             Posterior probabilities estimates for each test example.
         """
         pass
-    
-    #---------------------------------------------------------------------
-    #Modified by Leandro Augusto Ensina: 23-11-2023
-    #---------------------------------------------------------------------
+
     def predict(self, X, y):
         """Predict the class label for each sample in X.
 
@@ -338,10 +319,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
                 preds[inds] = preds_ds
 
         return self.classes_.take(preds)
-    #---------------------------------------------------------------------
-    #---------------------------------------------------------------------
-    #Included by Leandro Augusto Ensina: 23-11-2023
-    #---------------------------------------------------------------------
+
     def obtain_best_classifiers(self, X, y, probs=None):
         """Obtain a subset of regressors for each sample in X.
 
@@ -406,11 +384,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
                 selected_algorithms[inds] = self.show_selected_classifiers(temp)
                 
         return selected_algorithms, self.classes_.take(preds)
-    #---------------------------------------------------------------------
-    
-    #---------------------------------------------------------------------
-    #Included by Leandro Augusto Ensina: 23-11-2023
-    #---------------------------------------------------------------------
+
     def show_selected_classifiers(self, classifiers):
         result = []
         for i in range(len(classifiers)):
@@ -562,14 +536,7 @@ class BaseDS(BaseEstimator, ClassifierMixin):
         if len(X) < 2:
             raise ValueError('More than one sample is needed '
                              'if the pool of classifiers is not informed.')
-        # Split the dataset into training (for the base classifier) and
-        # DSEL (for DS)
-        #---------------------------------------------------------------------
-        #Modified by Leandro Augusto Ensina: 23-11-2023
-        #---------------------------------------------------------------------
-        #X_train, X_dsel, y_train, y_dsel = train_test_split(
-        #    X, y, test_size=self.DSEL_perc,
-        #    random_state=self.random_state_)
+
         X_train = X
         X_dsel = X
         y_train = y
@@ -734,12 +701,8 @@ class BaseDS(BaseEstimator, ClassifierMixin):
                                dtype=np.intp)
 
         for index, clf in enumerate(self.pool_classifiers_):
-            #---------------------------------------------------------------------
-            #Modified by Leandro Augusto Ensina: 23-11-2023
-            #---------------------------------------------------------------------
-            #labels = clf.predict(X[:, self.estimator_features_[index]])
+
             labels = self.pred_train[index]
-            #---------------------------------------------------------------------
             predictions[:, index] = self._encode_base_labels(labels)
         
         return predictions

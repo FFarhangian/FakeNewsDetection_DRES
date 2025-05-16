@@ -47,18 +47,13 @@ class Oracle(BaseStaticEnsemble):
     Information Fusion, vol. 41, pp. 195 – 216, 2018.
 
     """
-    #---------------------------------------------------------------------
-    #Modified by Leandro Augusto Ensina
-    #---------------------------------------------------------------------
+
     def __init__(self, pool_classifiers=None, random_state=None, n_jobs=-1, alg_pool=None):
         super(Oracle, self).__init__(pool_classifiers=pool_classifiers,
                                      random_state=random_state,
                                      n_jobs=n_jobs, alg_pool=None)
         
 
-    #---------------------------------------------------------------------
-    #Modified by Leandro Augusto Ensina
-    #---------------------------------------------------------------------
     def fit(self, X, y, pred_train):
         """Fit the model according to the given training data.
 
@@ -87,9 +82,6 @@ class Oracle(BaseStaticEnsemble):
         super(Oracle, self).fit(X, y, pred_train)
         return self
 
-    #---------------------------------------------------------------------
-    #Modified by Leandro Augusto Ensina
-    #---------------------------------------------------------------------
     def predict(self, X, y, pred_test):
         """Prepare the labels using the Oracle model.
 
@@ -124,9 +116,7 @@ class Oracle(BaseStaticEnsemble):
 
         return self.classes_.take(predicted_labels.astype(int))
 
-    #---------------------------------------------------------------------
-    #Modified by Faramarz Farhangian
-    #---------------------------------------------------------------------
+
 
     # def predict(self, X, y, pred_test):
     #     """Prepare the labels using the Oracle model.

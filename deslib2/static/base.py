@@ -56,15 +56,8 @@ class BaseStaticEnsemble(BaseEstimator, ClassifierMixin):
         self.pool_classifiers = pool_classifiers
         self.random_state = random_state
         self.n_jobs = n_jobs
-        #---------------------------------------------------------------------
-        #Included by Leandro Augusto Ensina
-        #---------------------------------------------------------------------
         self.algorithms_pool = alg_pool
-        #---------------------------------------------------------------------
 
-    #---------------------------------------------------------------------
-    #Modified by Leandro Augusto Ensina
-    #---------------------------------------------------------------------
     def fit(self, X, y, pred_train):
         """Fit the model according to the given training data.
 
@@ -81,12 +74,9 @@ class BaseStaticEnsemble(BaseEstimator, ClassifierMixin):
         self : object
             Returns self.
         """
-        #---------------------------------------------------------------------
-        #Included by Leandro Augusto Ensina: 23-11-2023
-        #---------------------------------------------------------------------
+
         self.pred_train = pred_train
-        #---------------------------------------------------------------------
-        
+
         self.random_state_ = check_random_state(self.random_state)
 
         # Check if the pool of classifiers is None. If yes, use a
