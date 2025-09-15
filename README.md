@@ -30,11 +30,6 @@ If you use this code, please cite our paper:
 
 Thanks to the following people for their contributions:
 
-<a href="https://github.com/FFarhangian">
-  <img src="https://github.com/FFarhangian.png" width="60px;" style="border-radius:50%;" alt=""/>
+<a href="https://github.com/FFarhangian/FakeNewsDetection_DRES/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=FFarhangian/FakeNewsDetection_DRES" alt="Contributors graph" />
 </a>
-<a href="https://github.com/Menelau">
-  <img src="https://github.com/Menelau.png" width="60px;" style="border-radius:50%;" alt=""/>
-</a>
-
-
